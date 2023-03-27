@@ -1,0 +1,228 @@
+
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("[ALIENS👽] My Restaurant! | Legend HandlesYT", "GrapeTheme")
+
+local Tab = Window:NewTab("Main-Features")
+
+
+
+local Tab1 = Window:NewTab("Settings")
+
+local Section = Tab:NewSection("Main-Features")
+
+
+local CredSection = Tab1:NewSection("Settings")
+
+Section:NewToggle("Auto Farm", "Auto Farm", function(state)
+    
+    if state then
+  getgenv().fpsBoost = false
+
+loadstring(game:HttpGet("https://rawscripts.net/raw/My-Restaurant!-Fast-Autofarm-4610"))()
+
+else
+    
+    print("off")
+    end
+end)
+
+Section:NewToggle("Auto Interact", "Interact Faster", function(Value)
+   a = Value
+        while a do task.wait(.1)
+        pcall(function()
+   keypress(0x45)
+                    wait()
+                    keyrelease(0x45)
+                    wait()
+        end)
+        end
+
+end)
+
+Section:NewButton("Teleport To Big Shop", "Teleport", function() -- 500 (MaxValue) | 0 (MinValue)
+      local oh1 = CFrame.new(-400.942963, 227.299744, 1019.83783, -0.999382496, -5.05998798e-08, -0.0351366773, -5.21216101e-08, 1, 4.23929514e-08, 0.0351366773, 4.41981527e-08, -0.999382496)
+    local oh2 = game:GetService("Players")
+    local oh3 = oh2.LocalPlayer.Character.HumanoidRootPart
+    
+    
+    oh3.CFrame = oh1
+end)
+
+
+Section:NewButton("Tall", "Tall", function() 
+
+size = 5 -- from 1 to 5
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Character = LocalPlayer.Character
+local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+
+function rm()
+
+for i,v in pairs(Character:GetDescendants()) do
+if v:IsA("BasePart") then
+if v.Name == "Handle" or v.Name == "Head" then
+if Character.Head:FindFirstChild("OriginalSize") then
+Character.Head.OriginalSize:Destroy()
+end
+else
+for i,cav in pairs(v:GetDescendants()) do
+if cav:IsA("Attachment") then
+if cav:FindFirstChild("OriginalPosition") then
+cav.OriginalPosition:Destroy() 
+end
+end
+end
+v:FindFirstChild("OriginalSize"):Destroy()
+if v:FindFirstChild("AvatarPartScaleType") then
+v:FindFirstChild("AvatarPartScaleType"):Destroy()
+end
+end
+end
+end
+end
+
+
+if size == 1 then
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
+wait(1)
+end
+
+if size == 2 then
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
+wait(1)
+end
+
+if size == 3 then
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyWidthScale"):Destroy()
+wait(1)
+end
+
+if size == 4 then
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyWidthScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyDepthScale"):Destroy()
+wait(1)
+end
+
+
+if size == 5 then
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyWidthScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("BodyDepthScale"):Destroy()
+wait(1)
+
+rm()
+wait(0.5)
+Humanoid:FindFirstChild("HeadScale"):Destroy()
+wait(1)
+end
+end)
+
+Section:NewSlider("Walkspeed", "Speed", 300, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    getgenv().WalkSpeedValue = (s); --set your desired walkspeed here
+
+local Player = game:service'Players'.LocalPlayer;
+
+Player.Character.Humanoid:GetPropertyChangedSignal'WalkSpeed':Connect(function()
+
+Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+
+end)
+
+
+Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+end)
+
+
+Section:NewToggle("Infinite Jump", "Infinite Jump", function(state)
+
+ if state then
+_G.infinjump = true
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+Mouse.KeyDown:connect(function(k)
+if _G.infinjump then
+if k:byte() == 32 then
+Humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+Humanoid:ChangeState("Jumping")
+wait(0.1)
+Humanoid:ChangeState("Seated")
+end
+end
+end)
+local Player = game:GetService("Players").LocalPlayer
+local Mouse = Player:GetMouse()
+    else
+if _G.infinjump == true then
+_G.infinjump = false
+else
+_G.infinjump = true
+end
+end
+            end)
+
+
+
+Section:NewButton("Reset", "Reset", function() 
+     game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    end)
+CredSection:NewLabel("Made By Legend HandlesYT")
+
+
+CredSection:NewKeybind("Toggle UI", "Toggle The UI", Enum.KeyCode.L, function()
+	Library:ToggleUI()
+end)
